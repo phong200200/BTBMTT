@@ -11,6 +11,7 @@ public class NguoiDungDAO {
 	public static NguoiDung layNguoiDungDangNhap(String email, String password) {
 		NguoiDung user = null;
 		Session session = HibernateUtil.getSessionFactory().openSession();
+		
 		try {
 			String hql = "from NguoiDung u where u.email = ?0 and u.matKhau = ?1";
 			Query query = session.createQuery(hql);
