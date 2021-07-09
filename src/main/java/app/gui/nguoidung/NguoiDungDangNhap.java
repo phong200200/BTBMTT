@@ -139,7 +139,7 @@ public class NguoiDungDangNhap extends JFrame {
 				//====================
 				this.dispose();
 				
-				NguoiDungFrame frm = new NguoiDungFrame(userLogin);
+				NguoiDungFrame frm = new NguoiDungFrame(userLogin,userLogin.getNguoiDungId());
 				frm.setVisible(true);
 			}
 		} catch (Exception e) {

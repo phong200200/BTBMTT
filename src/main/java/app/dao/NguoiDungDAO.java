@@ -42,4 +42,21 @@ public class NguoiDungDAO {
 		}
 		return id;
 	}
+	
+	public static void update(NguoiDung nguoiDung) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		
+		try {
+			
+			session.update(nguoiDung);
+			
+			transaction.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			transaction.rollback();
+			e.printStackTrace();
+		}
+		
+	}
 }
