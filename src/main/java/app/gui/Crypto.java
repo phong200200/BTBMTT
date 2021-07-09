@@ -5,8 +5,8 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.IvParameterSpec;
-import com.alee.utils.encryption.Base64;
 
+import java.util.Base64;
 public class Crypto {
 
 	static String key = "Tt3rLPrDIVIhXqAz";
@@ -37,7 +37,7 @@ public class Crypto {
 		cipher.init(Cipher.ENCRYPT_MODE, deskey, ips);
 		byte[] bOut = cipher.doFinal(plainText.getBytes("UTF-8"));
 
-		return Base64.encode(bOut);
+		return Base64.getEncoder().encodeToString(bOut);
 	}
 
 	private String decrypter(String strEncrypted) throws Exception {
@@ -63,7 +63,7 @@ public class Crypto {
 
 		IvParameterSpec ips = new IvParameterSpec(keyBytes);
 		cipher.init(Cipher.DECRYPT_MODE, deskey, ips);
-		byte[] bOut = cipher.doFinal(Base64.decode(strEncrypted));
+		byte[] bOut = cipher.doFinal(Base64.getDecoder().decode(strEncrypted));
 
 		return new String(bOut, "UTF-8");
 

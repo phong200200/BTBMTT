@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import app.bus.NguoiDungBUS;
 import app.dto.NguoiDung;
+import app.gui.Crypto;
 import app.gui.GhiLichSu;
 
 import javax.swing.JPasswordField;
@@ -23,6 +24,8 @@ import javax.swing.JPasswordField;
 
 public class Admin extends JFrame {
 
+	Crypto cr = new Crypto();
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtTK;
@@ -91,10 +94,10 @@ public class Admin extends JFrame {
 	private void btnDangNhapClicked() {
 		try {
 			String pass = new String(txtMK.getPassword());
-			//===============================
 			
-			//===============================
-			NguoiDung user = NguoiDungBUS.nguoiDungDangNhap(txtTK.getText(), pass);
+			String encrPass = new String(cr.setPass(pass));
+			
+			NguoiDung user = NguoiDungBUS.nguoiDungDangNhap(txtTK.getText(), encrPass);
 			if (user == null) {
 				JOptionPane.showMessageDialog(this, "Sai tên tài khoản hoặc mật khẩu!");
 			} else if (user.getVaiTro().getId() != 1) {
