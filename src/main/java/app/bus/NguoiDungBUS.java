@@ -11,4 +11,5 @@ public class NguoiDungBUS {
 	public static int themNguoiDung(NguoiDung nguoiDung) {
 		return NguoiDungDAO.add(nguoiDung);
 	}
+	
 }
