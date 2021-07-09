@@ -11,9 +11,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import org.hibernate.Session;
+
 import app.bus.NguoiDungBUS;
 import app.dto.NguoiDung;
 import app.dto.VaiTro;
+import app.gui.Crypto;
 import app.gui.GhiLichSu;
 
 public class PanelSuaThongTin extends JPanel {
@@ -26,7 +29,7 @@ public class PanelSuaThongTin extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelSuaThongTin() {
+	public PanelSuaThongTin(int idUserLogging) {
 		setBounds(0, 0, 876, 528);
 		setLayout(null);
 		
@@ -71,7 +74,7 @@ public class PanelSuaThongTin extends JPanel {
 		JButton btnSuaTT = new JButton("Sửa");
 		btnSuaTT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnSuaTTClicked();
+				btnSuaTTClicked(idUserLogging);
 			}
 		});
 		btnSuaTT.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -79,10 +82,12 @@ public class PanelSuaThongTin extends JPanel {
 		add(btnSuaTT);
 	}
 
-	protected void btnSuaTTClicked() {
+	
+
+	protected void btnSuaTTClicked(int idUserLogging) {
 		// TODO Auto-generated method stub
 		JOptionPane pane = new JOptionPane("Are u sure?",JOptionPane.QUESTION_MESSAGE,JOptionPane.YES_NO_OPTION);
-		if(((Integer) pane.getValue()).intValue() == JOptionPane.YES_OPTION) {
+		
 			try {
 				if (txtEmail.getText().isBlank() || txtTen.getText().isBlank() || new String(txtMK.getPassword()).isBlank() ||  new String(txtXacNhan.getPassword()).isBlank()) {
 					throw new Exception("Vui lòng nhập đủ thông tin");
@@ -90,23 +95,26 @@ public class PanelSuaThongTin extends JPanel {
 				if (new String(txtMK.getPassword()).compareTo(new String(txtXacNhan.getPassword())) != 0){
 					throw new Exception("Mật khẩu không khớp");
 				}
+				
 				NguoiDung user = new NguoiDung();
-				user.setNguoiDungId(user.getNguoiDungId());
+				user.setNguoiDungId(idUserLogging);
 				user.setTen(txtTen.getText());
 				user.setEmail(txtEmail.getText());
 				user.setVaiTro(new VaiTro(2));
-				user.setMatKhau(new String(txtMK.getPassword()));
 				
-				int id = NguoiDungBUS.themNguoiDung(user);
+				Crypto cr = new Crypto();
+				user.setMatKhau(cr.setPass(new String(txtMK.getPassword())));
+				
+				NguoiDungBUS.updateNguoiDung(user);
 				
 				//ghi lich su
-				GhiLichSu.ghiLichSu(id, 3);
+				GhiLichSu.ghiLichSu(idUserLogging, 4);
 				
-				JOptionPane.showMessageDialog(this, "Tạo tài khoản thành công!");
+				JOptionPane.showMessageDialog(this, "Đổi thông tin thành công");
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-		}
+		
 		
 	}
 

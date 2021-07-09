@@ -12,4 +12,7 @@ public class NguoiDungBUS {
 		return NguoiDungDAO.add(nguoiDung);
 	}
 	
+	public static void updateNguoiDung(NguoiDung nguoiDung) {
+		NguoiDungDAO.update(nguoiDung);
+	}
 }

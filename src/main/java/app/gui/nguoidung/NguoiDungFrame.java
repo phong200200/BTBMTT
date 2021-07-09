@@ -21,7 +21,7 @@ public class NguoiDungFrame extends JFrame {
 
 	
 	private NguoiDung nguoiDung;
-	public NguoiDungFrame(NguoiDung user) {
+	public NguoiDungFrame(NguoiDung user,int idUserLogging) {
 		this.nguoiDung = user;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 852, 493);
@@ -36,7 +36,7 @@ public class NguoiDungFrame extends JFrame {
 		tabbedPane.addTab("Hello", null, new PanelHelloUser(), null);
 		
 		contentPane.add(tabbedPane);
-		tabbedPane.addTab("Đổi thông tin", null, new PanelSuaThongTin(), null);
+		tabbedPane.addTab("Đổi thông tin", null, new PanelSuaThongTin(idUserLogging), null);
 		
 	}
 
