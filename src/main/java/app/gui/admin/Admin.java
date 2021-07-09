@@ -91,7 +91,7 @@ public class Admin extends JFrame {
 	private void btnDangNhapClicked() {
 		try {
 			String pass = new String(txtMK.getPassword());
-			//băm cái pass ở đây
+			//===============================
 			
 			//===============================
 			NguoiDung user = NguoiDungBUS.nguoiDungDangNhap(txtTK.getText(), pass);

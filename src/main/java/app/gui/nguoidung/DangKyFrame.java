@@ -5,19 +5,23 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
+import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
-public class NguoiDung extends JFrame {
-	private static final long serialVersionUID = 1L;
+import app.gui.admin.PanelTheoDoi;
+
+public class DangKyFrame extends JFrame {
+
 	private JPanel contentPane;
 
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel("com.alee.laf.WebLookAndFeel");
-					NguoiDung frame = new NguoiDung();
+					DangKyFrame frame = new DangKyFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -29,13 +33,17 @@ public class NguoiDung extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public NguoiDung() {
+	public DangKyFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 786, 397);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		
+		tabbedPane.addTab("Đăng ký", null, new PanelDangKy(), null);
 	}
 
 }

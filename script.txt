@@ -43,6 +43,9 @@ Alter table NguoiDung add  foreign key(id) references VaiTro (id)  on update no 
 
 Alter table LSNguoiDung add  foreign key(loaiLichSuId) references LoaiLichSu (loaiLichSuId)  on update no action on delete no action ;
 
+use bmtt;
 INSERT INTO `vaitro` VALUES (1,'admin'),(2,'Người dùng');
 INSERT INTO `loailichsu` VALUES (1,'Đăng nhập'),(2,'Đăng xuất'),(3,'Tạo TK');
+
+INSERT INTO `nguoidung` VALUES (2,0,'User1','User1@gmail.com','user'),(1,1,'admin','admin@gmail.com','admin');
 
