@@ -18,6 +18,16 @@ public class VaiTro {
 	
 	@OneToMany(mappedBy = "vaiTro")
 	private List<NguoiDung> nguoiDungs;
+	
+	
+
+	public VaiTro(int id) {
+		this.id = id;
+	}
+	
+	public VaiTro() {
+		
+	}
 
 	public int getId() {
 		return id;

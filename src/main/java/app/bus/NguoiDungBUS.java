@@ -7,4 +7,8 @@ public class NguoiDungBUS {
 	public static NguoiDung nguoiDungDangNhap(String email, String pass) {
 		return NguoiDungDAO.layNguoiDungDangNhap(email, pass);
 	}
+	
+	public static int themNguoiDung(NguoiDung nguoiDung) {
+		return NguoiDungDAO.add(nguoiDung);
+	}
 }

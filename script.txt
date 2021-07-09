@@ -1,0 +1,48 @@
+create database bmtt;
+use bmtt;
+Create table NguoiDung
+(
+	nguoiDungId Integer auto_increment NOT NULL,
+	id Integer NOT NULL,
+	ten Nvarchar(255) NULL,
+	email Nvarchar(255) NULL,
+	matKhau Varchar(20) NULL,
+Primary Key (nguoiDungId)
+) ;
+
+Create table LSNguoiDung
+(
+	lSNguoiDungId Integer auto_increment NOT NULL,
+	nguoiDungId Integer NOT NULL,
+	loaiLichSuId Integer NOT NULL,
+	thoiGian Datetime NOT NULL,
+Primary Key (lSNguoiDungId)
+) ;
+
+
+Create table VaiTro
+(
+	id Integer auto_increment NOT NULL,
+	tenVaiTro Nvarchar(255) NULL,
+Primary Key (id)
+) ;
+
+
+Create table LoaiLichSu
+(
+	loaiLichSuId Integer auto_increment NOT NULL,
+	tenLoai Nvarchar(255) NULL,
+Primary Key (loaiLichSuId)
+) ;
+
+
+
+Alter table LSNguoiDung add  foreign key(nguoiDungId) references NguoiDung (nguoiDungId)  on update no action on delete no action ;
+
+Alter table NguoiDung add  foreign key(id) references VaiTro (id)  on update no action on delete no action ;
+
+Alter table LSNguoiDung add  foreign key(loaiLichSuId) references LoaiLichSu (loaiLichSuId)  on update no action on delete no action ;
+
+INSERT INTO `vaitro` VALUES (1,'admin'),(2,'Người dùng');
+INSERT INTO `loailichsu` VALUES (1,'Đăng nhập'),(2,'Đăng xuất'),(3,'Tạo TK');
+

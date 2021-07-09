@@ -1,6 +1,7 @@
 package app.dao;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import app.dto.NguoiDung;
@@ -24,5 +25,21 @@ public class NguoiDungDAO {
 			session.close();
 		}
 		return user;
+	}
+	
+	public static int add(NguoiDung nguoiDung) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		int id = -1;
+		try {
+			id = (Integer) session.save(nguoiDung);
+			transaction.commit();
+		} catch (Exception e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return id;
 	}
 }
