@@ -122,7 +122,7 @@ public class NguoiDungDangNhap extends JFrame {
 			//băm cái pass ở đây
 			
 			
-			String encrPass = cr.getPass(new String(txtPass.getPassword()));
+			String encrPass = cr.setPass(new String(txtPass.getPassword()));
 			//===============================
 			NguoiDung userLogin = NguoiDungBUS.nguoiDungDangNhap(txtUser.getText(), encrPass);
 			if (userLogin == null) {
