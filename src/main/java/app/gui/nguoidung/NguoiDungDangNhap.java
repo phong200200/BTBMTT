@@ -82,19 +82,15 @@ public class NguoiDungDangNhap extends JFrame {
 
 		JButton btnExit = new JButton("Thoát");
 		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnExit.setBounds(536, 207, 160, 49);
+		btnExit.setBounds(361, 160, 160, 49);
 		contentPane.add(btnExit);
 		
-		JButton btnDangky = new JButton("Đăng ký user");
-		btnDangky.setFont(new Font("Tahoma",Font.PLAIN,18));
-		btnDangky.setBounds(320, 160, 149, 49);
-		contentPane.add(btnDangky);
-		btnDangky.addActionListener(new ActionListener() {
+		btnExit.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				btnDangkyClicked();
+				btnExitClicked();
 			}
 		});
 		
@@ -113,10 +109,9 @@ public class NguoiDungDangNhap extends JFrame {
 		
 	}
 
-	protected void btnDangkyClicked() {
+	protected void btnExitClicked() {
 		// TODO Auto-generated method stub
-		DangKyFrame frm = new DangKyFrame();
-		frm.setVisible(true);
+		
 	}
 
 	private void btnLoginClicked() {
@@ -126,10 +121,10 @@ public class NguoiDungDangNhap extends JFrame {
 			String pass = new String(txtPass.getPassword());
 			//băm cái pass ở đây
 			
-			String passEncr = cr.getPass(pass);
 			
+			String encrPass = cr.getPass(new String(txtPass.getPassword()));
 			//===============================
-			NguoiDung userLogin = NguoiDungBUS.nguoiDungDangNhap(txtUser.getText(), passEncr);
+			NguoiDung userLogin = NguoiDungBUS.nguoiDungDangNhap(txtUser.getText(), encrPass);
 			if (userLogin == null) {
 				JOptionPane.showMessageDialog(this, "Sai tên tài khoản hoặc mật khẩu!");
 			} else if (userLogin.getVaiTro().getId() == 1) {

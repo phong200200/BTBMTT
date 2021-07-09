@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import app.bus.NguoiDungBUS;
 import app.dto.NguoiDung;
 import app.dto.VaiTro;
+import app.gui.Crypto;
+import app.gui.Crypto;
 import app.gui.GhiLichSu;
 
 import javax.swing.JPasswordField;
@@ -92,7 +94,10 @@ public class PanelTaoNguoiDung extends JPanel {
 			user.setTen(txtTen.getText());
 			user.setEmail(txtEmail.getText());
 			user.setVaiTro(new VaiTro(2));
-			user.setMatKhau(new String(txtMK.getPassword()));
+			Crypto cr = new Crypto();
+			String EncrPass = cr.setPass(new String(txtMK.getPassword()));
+			
+			user.setMatKhau(EncrPass);
 			
 			int id = NguoiDungBUS.themNguoiDung(user);
 			
