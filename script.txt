@@ -47,4 +47,5 @@ use bmtt;
 INSERT INTO `vaitro` VALUES (1,'admin'),(2,'Người dùng');
 INSERT INTO `loailichsu` VALUES (1,'Đăng nhập'),(2,'Đăng xuất'),(3,'Tạo TK'),(4,'Sửa thông tin');
 INSERT INTO `nguoidung` VALUES (2,2,'User1','User1@gmail.com','user'),(1,1,'admin','admin@gmail.com','admin');
+INSERT INTO `bmtt`.`nguoidung` (`id`, `ten`, `email`, `matKhau`) VALUES ('1', 'admin', 'admin', 'OSbizuVQtIc=');
 
