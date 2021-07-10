@@ -89,7 +89,6 @@ public class NguoiDungDangNhap extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				btnExitClicked();
 			}
 		});
@@ -110,13 +109,11 @@ public class NguoiDungDangNhap extends JFrame {
 	}
 
 	protected void btnExitClicked() {
-		// TODO Auto-generated method stub
+		System.exit(0);
 		
 	}
 
 	private void btnLoginClicked() {
-		// TODO Auto-generated method stub
-		
 		try {
 			String pass = new String(txtPass.getPassword());
 			//băm cái pass ở đây

@@ -99,10 +99,10 @@ public class PanelTaoNguoiDung extends JPanel {
 			
 			user.setMatKhau(EncrPass);
 			
-			int id = NguoiDungBUS.themNguoiDung(user);
+			NguoiDungBUS.themNguoiDung(user);
 			
 			//ghi lich su
-			GhiLichSu.ghiLichSu(id, 3);
+			GhiLichSu.ghiLichSu(Admin.getNguoiDungHienTai().getNguoiDungId(), 3);
 			
 			JOptionPane.showMessageDialog(this, "Tạo tài khoản thành công!");
 		} catch (Exception e) {

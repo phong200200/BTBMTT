@@ -30,6 +30,17 @@ public class Admin extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtTK;
 	private JPasswordField txtMK;
+	
+	private static NguoiDung nguoiDungHienTai;
+	
+	public static NguoiDung getNguoiDungHienTai() {
+		return nguoiDungHienTai;
+	}
+
+	public static void setNguoiDungHienTai(NguoiDung nguoiDungHienTai) {
+		Admin.nguoiDungHienTai = nguoiDungHienTai;
+	}
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -90,7 +101,6 @@ public class Admin extends JFrame {
 		contentPane.add(txtMK);
 	}
 	
-	//====================================================================================================================
 	private void btnDangNhapClicked() {
 		try {
 			String pass = new String(txtMK.getPassword());
@@ -110,12 +120,12 @@ public class Admin extends JFrame {
 				this.dispose();
 				AdminFrame frm = new AdminFrame(user);
 				frm.setVisible(true);
+				
+				nguoiDungHienTai = user;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(this, e.getMessage());
 		}
 	}
-	
-	//====================================================================================================================
 }

@@ -14,6 +14,10 @@ import app.gui.admin.PanelTheoDoi;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JTabbedPane;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class NguoiDungFrame extends JFrame {
 
@@ -38,6 +42,20 @@ public class NguoiDungFrame extends JFrame {
 		contentPane.add(tabbedPane);
 		tabbedPane.addTab("Đổi thông tin", null, new PanelSuaThongTin(idUserLogging), null);
 		
+		JButton btnDangXuat = new JButton("Đăng xuất");
+		btnDangXuat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnDangXuatClicked();
+			}
+		});
+		btnDangXuat.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		tabbedPane.addTab("Đăng xuất", null, btnDangXuat, null);
+		
 	}
 
+	private void btnDangXuatClicked() {
+		this.dispose();
+		NguoiDungDangNhap frm = new NguoiDungDangNhap();
+		frm.setVisible(true);
+	}
 }
